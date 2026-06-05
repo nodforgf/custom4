@@ -168,7 +168,7 @@ export default function MusicCassetteSection() {
         whileTap={{ scale: 0.94 }}
         className="mt-10 z-10 bg-[#e8789a] text-white px-12 py-4 rounded-full font-black uppercase tracking-[0.3em] shadow-[0_8px_30px_rgba(232,120,154,0.45)] flex items-center gap-3 text-sm transition-colors"
       >
-        <span className="text-lg">▶</span> Play Now
+        <span className="text-lg"></span> Play Now
       </motion.a>
 
       {/* background text */}
