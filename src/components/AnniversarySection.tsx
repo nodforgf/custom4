@@ -8,8 +8,8 @@ interface AnniversarySectionProps {
 
 export default function AnniversaryPage({ onFinish }: AnniversarySectionProps) {
   const [isExploding, setIsExploding] = useState(false); 
-  // 🎯 เปลี่ยนเป็นวันที่ 20 June 2026 (วันเสาร์)
-  const anniversaryDay = 20; 
+  // 🎯 จุดที่แก้ไข: เปลี่ยนหัวใจมาไฮไลท์อยู่ที่วันที่ 19 June 2026 (วันศุกร์)
+  const anniversaryDay = 19; 
   
   const handleBurst = () => {
     setIsExploding(true);
@@ -38,7 +38,7 @@ export default function AnniversaryPage({ onFinish }: AnniversarySectionProps) {
         <div className="absolute -top-2 right-10 w-24 h-10 bg-[#f4a7be]/30 backdrop-blur-[2px] rotate-[15deg] border-x border-[#f4a7be]/20 z-30" />
 
         <div className="absolute top-4 left-0 w-full px-12 flex justify-between opacity-25 pointer-events-none z-0">
-          <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }} className="text-[#e8789a] textxl">♥</motion.span>
+          <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }} className="text-[#e8789a] text-xl">♥</motion.span>
           <motion.span animate={{ scale: [1.2, 1, 1.2] }} transition={{ repeat: Infinity, duration: 2.5 }} className="text-[#e8789a] text-sm mt-4">♥</motion.span>
           <motion.span animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1.8 }} className="text-[#e8789a] text-lg mt-2">♥</motion.span>
         </div>
@@ -62,7 +62,6 @@ export default function AnniversaryPage({ onFinish }: AnniversarySectionProps) {
 
           <div className="w-[90%] bg-white/60 border border-[#f4a7be]/30 rounded-xl p-5 shadow-sm relative">
             <div className="flex justify-between items-center mb-6 px-1">
-              {/* 🎯 แก้ไขเป็น June 2026 */}
               <span className="text-[#c2547a] font-black text-[14px] uppercase tracking-[0.2em]">June 2026</span>
             </div>
             <div className="grid grid-cols-7 gap-y-4 text-center items-center">
@@ -70,10 +69,9 @@ export default function AnniversaryPage({ onFinish }: AnniversarySectionProps) {
                 <span key={`h-${index}`} className="text-[9px] font-black text-[#e8789a]/50 tracking-tighter">{day}</span>
               ))}
               
-              {/* 🎯 June 2026: วันที่ 1 ตรงกับวันจันทร์ ดังนั้นต้องเว้นว่างช่องวันอาทิตย์ (SUN) ไป 1 ช่อง */}
+              {/* June 2026: วันที่ 1 ตรงกับวันจันทร์ จึงต้องเว้นช่องวันอาทิตย์ไว้ 1 ช่อง */}
               <div key="empty-1" className="h-10" />
               
-              {/* เดือนมิถุนายนมี 30 วัน */}
               {Array.from({ length: 30 }, (_, i) => i + 1).map(day => (
                 <div key={`d-${day}`} className="relative h-10 flex items-center justify-center">
                   {day === anniversaryDay ? (

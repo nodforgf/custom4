@@ -5,11 +5,11 @@ import confetti from 'canvas-confetti';
 
 const CARD_IMAGES = [
     "/images/7.png",
-    "/images/1.jpeg",
-    "/images/2.jpeg",
-    "/images/3.png",
-    "/images/4.png",
-    "/images/5.jpeg",
+    "/images/8.jpeg",
+    "/images/9.png",
+    "/images/10.jpeg",
+    "/images/11.jpeg",
+    "/images/12.jpeg",
 ];
 
 export default function GiftQuestSection({ onBack, onFinish }: { onBack: () => void, onFinish: () => void }) {
@@ -27,8 +27,8 @@ export default function GiftQuestSection({ onBack, onFinish }: { onBack: () => v
     const [isSpinning, setIsSpinning] = useState(false);
 
     const GIFTS = [
-        "คูปองพาเที่ยวเดือนละ 1 ครั้ง 💖", "คูปองตามใจแฟน ตลอดไป 👩‍❤️‍💋‍👨", "คูปองนวดไหล่ 15 นาที 🤍", "คูปองเลือกเมนูอาหารได้ 1 มื้อ 🍜",
-        "คูปองดูหนังเรื่องโปรดด้วยกัน 🎬", "คูปองเดตพิเศษ 1 วัน 🌷", "คูปองงอนแล้วหายทันที 😆", "คูปองบอกรักได้ไม่อั้น 1 วัน 🫶"
+        "คูปองไม่งอน1วัน 💖", "คูปองเลือกเมนูพิเศษ2อย่าง 🍜", "คูปองรักกันข้ามปี 🤍", "คูปองขอจุ๊บตอนไหนก็ได้ 👩‍❤️‍💋‍👨",
+        "คูปองไม่นอยย 😘", "คูปองไม่มีโกรธ 🌷", "คูปองบอกรักทั้งวัน 😆", "คูปองรักกันตลอดไป 🫶"
     ];
 
     const fireConfetti = () => {

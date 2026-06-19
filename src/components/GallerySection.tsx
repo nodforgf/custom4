@@ -18,16 +18,18 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const messages = [
-    "เวลาเค้ากินอะไรไปคุยไปกับเธอโคตรอร่อยเลยนะ", // idx 0 (Memory #1)
-    "เธอจำได้ไหมเจอกันครั้งที่2 ดอกไม้ช่อแรก เซอร์ไพรส์มากๆเลยนะ เค้าชอบมากๆทำเค้ายิ้มได้ทั้งวันเลยนะ", // idx 1 (Memory #2)
-    "จำได้ไหมเค้าขอเธอถ่ายรูปครั้งแรกน่ารักมากนะ",     // idx 2 (Memory #3)
-    "กินข้าวด้วยกันครั้งแรกเธอแอบถ่ายเค้า ด้วยละ",
-    "เค้ามากินเตี๋ยวกับเธอ หลังจากต้องอยู่ไกลกัน ยิ้มหวานใหญ่เลย ร้านประจำอร่อยสุดๆ",
-    "เราไปคาเฟ่ ถ่ายรูปเล่นกัน วันนั้นเธอหล่อที่สุดเลย",
+    "รูปนี้คือรูปครบรอบแรกของเรานะเก้าเค้าอยากให้มีรูปวันครบรอบไปเรื่อยๆจนกว่าจะได้เจอเลย", // idx 0 (Memory #1)
+    "เก้าเป็นคนแรกกของอะไรหลายๆอย่างของเค้า เค้ารักเก้ามากๆนะ", // idx 1 (Memory #2)
+    "สายนี้อาจจะมีทะเลาะบ้างเถียงกันบ้างแต่เราก็หันหน้าคุยเปิดใจคุยกันตลอด",     // idx 2 (Memory #3)
+    "ถึงเธอจะกวนตีนรู้ทั้งรู้ว่าเค้าเป็นประสาทก็ยังกวนส้นตีนแต่ยังไงเค้าก็รักเก้าเหมือนเดิมนะ", // idx 3
+    "ไม่ว่ายังไงต่อให้เราจะผิดใจกันยังไงเค้าขอแค่เราไม่หันหลังให้กันนะเพราะเค้ายังอยากมีเธอแบบบนี้ไปอีกนาน", // idx 4
+    "ก็นี่แหละะสิ่งที่เค้าอยากจะบอกมีแค่นี้แหละอาจจะน้อยแต่เค้ารักเก้ามากกว่าที่เก้าเห็นอีก", // idx 5
   ];
 
-  // 🎯 เช็คว่าเป็น Memory #2 (idx === 1) หรือไม่
-  const isLongMessage = idx % messages.length === 1;
+  const currentMessage = messages[idx % messages.length];
+  
+  {/* 🎯 ตรวจสอบความยาวตัวอักษร: ถ้าข้อความยาวเกิน 50 ตัวอักษร ให้ปรับโหมดกระชับเพื่อป้องกันการล้นขอบ */}
+  const isLongMessage = currentMessage.length > 50;
 
   return (
     <motion.div
@@ -89,11 +91,11 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
           <span className="text-[#e8789a] mb-1 text-base flex-shrink-0">♥</span>
           
           <div className="overflow-y-auto flex-1 w-full flex items-center justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {/* 🎯 จุดที่แก้ไข: ปรับเพิ่มระยะห่างระหว่างบรรทัด (leading-loose) และเพิ่ม padding ด้านข้าง (px-2) สำหรับการ์ดที่ 2 */}
-            <p className={`text-[#c2547a] font-bold text-center italic break-words 
-              ${isLongMessage ? 'text-[10px] leading-loose px-2' : 'text-[12px] leading-relaxed px-1'}`}
+            {/* 🎯 จุดที่แก้ไข: ตัวหนังสือจะคำนวณขนาดตามความยาวข้อความจริง ถ้าข้อความยาวจะเปลี่ยนเป็น text-[10px] leading-normal เพื่อให้เซฟพื้นที่ขอบล่างพอดีตัว */}
+            <p className={`text-[#c2547a] font-bold text-center italic break-words px-2 
+              ${isLongMessage ? 'text-[10px] leading-normal' : 'text-[12px] leading-relaxed'}`}
             >
-              "{messages[idx % messages.length]}"
+              "{currentMessage}"
             </p>
           </div>
 
@@ -110,12 +112,12 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
 
 export default function GallerySection({ onNext }: GallerySectionProps) {
   const myPhotos = [
-    "/images/1.jpeg",
+    "/images/1.png",
     "/images/2.jpeg",
-    "/images/3.png",
-    "/images/4.png",
+    "/images/3.jpeg",
+    "/images/4.jpeg",
     "/images/5.jpeg",
-    "/images/6.png",
+    "/images/6.jpeg",
   ];
 
   const photoDates = [

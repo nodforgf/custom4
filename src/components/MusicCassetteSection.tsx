@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 
 export default function MusicCassetteSection() {
-  const PLAYLIST_URL = "https://www.youtube.com/watch?v=c68g7-fhRVw";
+  const PLAYLIST_URL = "https://youtu.be/99jJP3DgdBQ?si=Uwny9ZtZ423JVk3y";
 
   return (
     <section className="min-h-screen w-full bg-[#fce4ec] flex flex-col items-center justify-center p-6 font-sans overflow-hidden relative">
