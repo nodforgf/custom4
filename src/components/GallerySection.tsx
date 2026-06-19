@@ -18,13 +18,16 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const messages = [
-  "เวลาเค้ากินอะไรไปคุยไปกับเธอโคตรอร่อยเลยนะ", // idx 0 (Memory #1)
-  "เธอจำได้ไหมเจอกันครั้งที่2 ดอกไม้ช่อแรก เซอร์ไพรส์มากๆเลยนะ เค้าชอบมากๆทำเค้ายิ้มได้ทั้งวันเลยนะ", // idx 1 (Memory #2) -> แก้ไขให้ตรงตามภาพของคุณ
-  "จำได้ไหมเค้าขอเธอถ่ายรูปครั้งแรกน่ารักมากนะ",     // idx 2 (Memory #3) -> แก้ไขให้ตรงตามภาพของคุณ
-  "กินข้าวด้วยกันครั้งแรกเธอแอบถ่ายเค้า ด้วยละ",
-  "เค้ามากินเตี๋ยวกับเธอ หลังจากต้องอยู่ไกลกัน ยิ้มหวานใหญ่เลย ร้านประจำอร่อยสุดๆ",
-  "เราไปคาเฟ่ ถ่ายรูปเล่นกัน วันนั้นเธอหล่อที่สุดเลย",
-];
+    "เวลาเค้ากินอะไรไปคุยไปกับเธอโคตรอร่อยเลยนะ", // idx 0 (Memory #1)
+    "เธอจำได้ไหมเจอกันครั้งที่2 ดอกไม้ช่อแรก เซอร์ไพรส์มากๆเลยนะ เ้าชอบมากๆทำเค้ายิ้มได้ทั้งวันเลยนะ", // idx 1 (Memory #2)
+    "จำได้ไหมเค้าขอเธอถ่ายรูปครั้งแรกน่ารักมากนะ",     // idx 2 (Memory #3)
+    "กินข้าวด้วยกันครั้งแรกเธอแอบถ่ายเค้า ด้วยละ",
+    "เค้ามากินเตี๋ยวกับเธอ หลังจากต้องอยู่ไกลกัน ยิ้มหวานใหญ่เลย ร้านประจำอร่อยสุดๆ",
+    "เราไปคาเฟ่ ถ่ายรูปเล่นกัน วันนั้นเธอหล่อที่สุดเลย",
+  ];
+
+  // 🎯 เช็คว่าเป็นการ์ดใบที่ 2 (idx === 1) ที่มีข้อความยาวเป็นพิเศษหรือไม่
+  const isLongMessage = idx % messages.length === 1;
 
   return (
     <motion.div
@@ -84,11 +87,17 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
           style={{ backfaceVisibility: "hidden" as const, WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
           <span className="text-[#e8789a] mb-1 text-base flex-shrink-0">♥</span>
-          <div className="overflow-y-auto flex-1 w-full flex items-center justify-center">
-            <p className={`text-[#c2547a] text-[12px] font-bold text-center italic break-words px-1 ${(idx % messages.length === 2 || idx % messages.length === 3) ? 'leading-normal' : 'leading-relaxed'}`}>
+          
+          {/* ซ่อน scrollbar ไว้ภายในตัวกล่องข้อความ */}
+          <div className="overflow-y-auto flex-1 w-full flex items-center justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {/* 🎯 จุดที่แก้ไข: ถ้าเป็น Memory #2 (isLongMessage) จะเปลี่ยนฟอนต์เหลือ text-[10px] และตั้งค่านำสายตาให้กระชับขึ้น */}
+            <p className={`text-[#c2547a] font-bold text-center italic break-words px-1 
+              ${isLongMessage ? 'text-[10px] leading-tight' : 'text-[12px] leading-relaxed'}`}
+            >
               "{messages[idx % messages.length]}"
             </p>
           </div>
+
           <div className="w-8 h-[1px] bg-[#e8789a]/20 my-1 flex-shrink-0" />
           <span className="text-[#c2547a]/40 text-[9px] uppercase tracking-tighter flex-shrink-0">
             Memory #{idx + 1}
@@ -110,7 +119,6 @@ export default function GallerySection({ onNext }: GallerySectionProps) {
     "/images/6.png",
   ];
 
-  // 🎯 ปรับอัปเดตวันที่ 1-6 ตรงตามบรีฟลูกค้า (แฟน) แป๊ะ ๆ ห้ามแตะอย่างอื่นเรียบร้อยครับเกลอ!
   const photoDates = [
     "1/6", 
     "2/6", 
@@ -121,7 +129,7 @@ export default function GallerySection({ onNext }: GallerySectionProps) {
   ];
 
   const scatteredStyles = [
-    { top: '5%',  left: '5vw',  rotate: -8 },
+    { top: '5%',   left: '5vw',  rotate: -8 },
     { top: '15%', left: '40vw', rotate: 12 },
     { top: '28%', left: '10vw', rotate: -15 },
     { top: '40%', left: '35vw', rotate: 10 },
