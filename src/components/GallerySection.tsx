@@ -26,7 +26,7 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
     "เราไปคาเฟ่ ถ่ายรูปเล่นกัน วันนั้นเธอหล่อที่สุดเลย",
   ];
 
-  // 🎯 เช็คว่าเป็นการ์ดใบที่ 2 (idx === 1) ที่มีข้อความยาวเป็นพิเศษหรือไม่
+  // 🎯 เช็คว่าเป็น Memory #2 (idx === 1) หรือไม่
   const isLongMessage = idx % messages.length === 1;
 
   return (
@@ -88,11 +88,10 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
         >
           <span className="text-[#e8789a] mb-1 text-base flex-shrink-0">♥</span>
           
-          {/* ซ่อน scrollbar ไว้ภายในตัวกล่องข้อความ */}
           <div className="overflow-y-auto flex-1 w-full flex items-center justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {/* 🎯 จุดที่แก้ไข: ถ้าเป็น Memory #2 (isLongMessage) จะเปลี่ยนฟอนต์เหลือ text-[10px] และตั้งค่านำสายตาให้กระชับขึ้น */}
-            <p className={`text-[#c2547a] font-bold text-center italic break-words px-1 
-              ${isLongMessage ? 'text-[10px] leading-tight' : 'text-[12px] leading-relaxed'}`}
+            {/* 🎯 จุดที่แก้ไข: ปรับเพิ่มระยะห่างระหว่างบรรทัด (leading-loose) และเพิ่ม padding ด้านข้าง (px-2) สำหรับการ์ดที่ 2 */}
+            <p className={`text-[#c2547a] font-bold text-center italic break-words 
+              ${isLongMessage ? 'text-[10px] leading-loose px-2' : 'text-[12px] leading-relaxed px-1'}`}
             >
               "{messages[idx % messages.length]}"
             </p>
