@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 
 const CARD_IMAGES = [
-    "/images/7.jpeg",
-    "/images/8.jpeg",
-    "/images/9.jpeg",
-    "/images/10.jpeg",
-    "/images/11.jpeg",
-    "/images/12.jpeg",
+    "/images/7.png",
+    "/images/1.jpeg",
+    "/images/2.jpeg",
+    "/images/3.png",
+    "/images/4.png",
+    "/images/5.jpeg",
 ];
 
 export default function GiftQuestSection({ onBack, onFinish }: { onBack: () => void, onFinish: () => void }) {
@@ -27,8 +27,8 @@ export default function GiftQuestSection({ onBack, onFinish }: { onBack: () => v
     const [isSpinning, setIsSpinning] = useState(false);
 
     const GIFTS = [
-        "หอมแก้ม 😘", "จุ๊ป 👩‍❤️‍💋‍👨", "เลี้ยงน้ำ 🧊", "เลี้ยงข้าว 🥩",
-        "ซื้อเกมส์ให้ 1 เกมส์ 🎮", "ให้เล่นเกมส์แบบไม่บ่น 1 วัน 🎲", "ขออะไรก็ได้ 1 อย่าง 💞", "ล้างห้องน้ำแทน 1ครั้ง ✨"
+        "คูปองพาเที่ยวเดือนละ 1 ครั้ง 💖", "คูปองตามใจแฟน ตลอดไป 👩‍❤️‍💋‍👨", "คูปองนวดไหล่ 15 นาที 🤍", "คูปองเลือกเมนูอาหารได้ 1 มื้อ 🍜",
+        "คูปองดูหนังเรื่องโปรดด้วยกัน 🎬", "คูปองเดตพิเศษ 1 วัน 🌷", "คูปองงอนแล้วหายทันที 😆", "คูปองบอกรักได้ไม่อั้น 1 วัน 🫶"
     ];
 
     const fireConfetti = () => {
@@ -283,7 +283,7 @@ export default function GiftQuestSection({ onBack, onFinish }: { onBack: () => v
                       🎁
                     </motion.span>
                     <p className="text-[#e8789a]/60 text-xs font-bold uppercase tracking-[0.2em] mb-2">Congratulations!</p>
-                    <h3 className="text-[#c2547a] font-black text-4xl uppercase italic mb-6 leading-tight">{result}</h3>
+                    <h3 className="text-[#c2547a] font-black text-2xl uppercase italic mb-6 leading-tight">{result}</h3>
                     <div className="w-full h-px bg-[#e8789a]/10 mb-8" />
                     
                     <button 

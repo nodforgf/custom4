@@ -18,12 +18,12 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const messages = [
-  "จำได้ไหมของขวัญชิ้นแรกที่เธอซื้อให้เค้าตอน Christmas เค้าชอบมากๆ แต่ไม่กล้าใช้กลัวน้องลอกง่ะ", // idx 0 (Memory #1)
-  "อันนี้ตอนวันปีใหม่และวันแรกที่ได้อยู่ด้วยกัน เค้ามีความสุขมากที่ได้อยู่ข้ามปีไปกับเธอ", // idx 1 (Memory #2) -> แก้ไขให้ตรงตามภาพของคุณ
-  "อันนี้ของขวัญวันเกิดเค้า ดอกไม้ช่อแรกที่เธอให้ สวยมากๆ แถมมีแต่ของที่เค้าชอบโดยเฉพาะการ์ดที่เธอทำให้ ขอบคุณมากๆนะ",     // idx 2 (Memory #3) -> แก้ไขให้ตรงตามภาพของคุณ
-  "ข้างๆคือของขวัญวันวาเลนไทน์ แต่ตรงกลางอันนี้ทำเค้าตกใจมาก เพราะไม่คิดว่าเธอจะขอเป็นแฟนตอนนั้น ขอบคุณที่เธอเลือกเค้านะ",
-  "ส่วนอันนี้เธอรู้ว่าเค้าอยากได้มากก เธอก็ไปตามหาซื้อมาให้จนได้ ทุกวันนี้เค้าใช้มันคุ้มสุดๆ",
-  "สุดท้ายอันนี้ เซอร์ไพรส์เพราะเธอคงไม่รู้ว่าโดนเค้าแอบถ่าย ไม่รู้จำได้ไหมมันคือวันที่เค้าพาเธอไปยื่นเรื่องจบ อิอิ<3",
+  "เวลาเค้ากินอะไรไปคุยไปกับเธอโคตรอร่อยเลยนะ", // idx 0 (Memory #1)
+  "เธอจำได้ไหมเจอกันครั้งที่2 ดอกไม้ช่อแรก เซอร์ไพรส์มากๆเลยนะ เค้าชอบมากๆทำเค้ายิ้มได้ทั้งวันเลยนะ", // idx 1 (Memory #2) -> แก้ไขให้ตรงตามภาพของคุณ
+  "จำได้ไหมเค้าขอเธอถ่ายรูปครั้งแรกน่ารักมากนะ",     // idx 2 (Memory #3) -> แก้ไขให้ตรงตามภาพของคุณ
+  "กินข้าวด้วยกันครั้งแรกเธอแอบถ่ายเค้า ด้วยละ",
+  "เค้ามากินเตี๋ยวกับเธอ หลังจากต้องอยู่ไกลกัน ยิ้มหวานใหญ่เลย ร้านประจำอร่อยสุดๆ",
+  "เราไปคาเฟ่ ถ่ายรูปเล่นกัน วันนั้นเธอหล่อที่สุดเลย",
 ];
 
   return (
@@ -85,7 +85,7 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
         >
           <span className="text-[#e8789a] mb-1 text-base flex-shrink-0">♥</span>
           <div className="overflow-y-auto flex-1 w-full flex items-center justify-center">
-            <p className={`text-[#c2547a] text-[9px] font-bold text-center italic break-words px-1 ${(idx % messages.length === 2 || idx % messages.length === 3) ? 'leading-normal' : 'leading-relaxed'}`}>
+            <p className={`text-[#c2547a] text-[12px] font-bold text-center italic break-words px-1 ${(idx % messages.length === 2 || idx % messages.length === 3) ? 'leading-normal' : 'leading-relaxed'}`}>
               "{messages[idx % messages.length]}"
             </p>
           </div>
@@ -103,9 +103,9 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
 export default function GallerySection({ onNext }: GallerySectionProps) {
   const myPhotos = [
     "/images/1.jpeg",
-    "/images/2.png",
-    "/images/3.jpeg",
-    "/images/4.jpeg",
+    "/images/2.jpeg",
+    "/images/3.png",
+    "/images/4.png",
     "/images/5.jpeg",
     "/images/6.png",
   ];
